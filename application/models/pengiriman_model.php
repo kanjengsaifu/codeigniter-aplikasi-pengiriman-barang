@@ -81,7 +81,7 @@ class Pengiriman_Model extends CI_Model
 		$query = $this->db->query("SELECT SQL_CALC_FOUND_ROWS pg.*,k.nama kategori,k.keterangan kategori_keterangan,kr.nama kurir,p.nama pelanggan,p.alamat
 								   ,group_concat(concat(dp.id_barang,'|',b.nama,'|',k.nama,'|',b.satuan,'|',dp.qty,'|',b.del_no)  order by b.nama SEPARATOR '===')  as barang
 								   FROM ".$this->table." pg
-								   LEFT JOIN detail_pengiriman dp on dp.id_pengiriman = dp.id_pengiriman
+								   LEFT JOIN detail_pengiriman dp on dp.id_pengiriman = pg.id_pengiriman
 								   LEFT JOIN barang b on b.id_barang = dp.id_barang
 								   LEFT JOIN kategori k on k.id_kategori = b.id_kategori
 								   LEFT JOIN kurir kr on kr.id_kurir = pg.id_kurir
